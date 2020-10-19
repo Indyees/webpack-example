@@ -2,15 +2,12 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
- 
 module.exports = {
-  mode: process.env.NODE_ENV || 'development',
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
- 
   devServer: {
     contentBase: 'dist/', // Relative directory for base of server
     publicPath: '/', // Live-reload
@@ -19,61 +16,53 @@ module.exports = {
     host: 'localhost', // Change to '0.0.0.0' for external facing server
     historyApiFallback: true,
   },
- 
   module: {
     rules: [
       {
         test: /\.(scss)$/,
-        use:
-          [
-            {
-              // Adds CSS to the DOM by injecting a `<style>` tag
-              loader: 'style-loader'
-            },
-            {
-              // Interprets `@import` and `url()` like `import/require()` and will resolve them
-              loader: 'css-loader'
-            },
-            {
-              // Loads a SASS/SCSS file and compiles it to CSS
-              loader: 'sass-loader'
-            }
-          ]
+        use: [
+          {
+            // Adds CSS to the DOM by injecting a `<style>` tag
+            loader: 'style-loader'
+          },
+          {
+            // Interprets `@import` and `url()` like `import/require()` and will resolve them
+            loader: 'css-loader'
+          },
+          {
+            // Loads a SASS/SCSS file and compiles it to CSS
+            loader: 'sass-loader'
+          }
+        ]
       },
       {
         test: /\.(js)$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
-          options:
-          {
+          options: {
             presets: ['@babel/preset-env']
           }
         }
       },
-        {
-           test: /\.(gif|png|jpe?g|svg)$/i,
-            use: 
-            [
-                {
-                    loader: 'file-loader',
-                    options: 
-                    {
-                        name: '[name].[ext]',
-                    },
-                },
-            'image-webpack-loader',
-            ],
-        }  
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+            },
+          },
+          'image-webpack-loader',
+        ],
+      }
     ],
   },
-    
-    plugins: [
+  plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
     }),
   ],
-
- 
 };

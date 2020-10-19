@@ -1,15 +1,22 @@
 {
-  "name": "webpack-corso",
+  "name": "corsotree-webpack",
   "version": "1.0.0",
-  "description": "Example project",
+  "description": "A simple example",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "serve": "webpack serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack serve",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indyees/corsotree-webpack.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indyees/corsotree-webpack/issues"
+  },
+  "homepage": "https://github.com/indyees/corsotree-webpack#readme",
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
@@ -21,9 +28,9 @@
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.3",
     "style-loader": "^2.0.0",
-    "webpack": "5.1.3",
-    "webpack-cli": "4.0.0",
-    "webpack-dev-server": "3.11.0"
+    "webpack": "^5.1.3",
+    "webpack-cli": "^4.1.0",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
